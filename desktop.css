@@ -36,8 +36,10 @@ li {
 	margin-bottom: 5px;
 }
 
-.sublist {
-	margin-bottom: 5px;
+li.subtext {
+
+	list-style-type: none;
+
 }
 
 .subtext {
