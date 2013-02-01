@@ -3,7 +3,7 @@ html {
 }
 
 body {
-	background-color: #EEEEEE;
+	background: #EEEEEE;
 	color: #888888;
 	font-family: Sans-serif;
 	font-size: 18px;
@@ -24,6 +24,11 @@ h2 {
 	margin-top: -20px;
 }
 
+hr {
+	color: #666666;
+	height: 0px;
+}
+
 a {
 	color: #888888;
 }
@@ -32,14 +37,16 @@ a:hover {
 	color: #333333;
 }
 
+a.nav {
+	font-size: 24px;
+}
+
 li {
 	margin-bottom: 5px;
 }
 
 li.subtext {
-
 	list-style-type: none;
-
 }
 
 .subtext {
@@ -61,4 +68,6 @@ li.subtext {
 
 #me {
 	margin-top: 100px;
+	width: 600px;
+	height: auto;
 }
