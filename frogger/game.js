@@ -179,6 +179,12 @@ function gameOver() {
 	game.font = "36pt Helvetica";
 	game.fillText("Game Over", 79, 290);
 	
+	$.post("http://aqueous-gorge-2852.herokuapp.com/submit.json",  {
+		game_title: "frogger",
+		username: "andrew",
+		score: game.score
+	});
+	
 	if (game.score > localStorage["froggerHighScore"]) {
 		localStorage["froggerHighScore"] = game.score;
 		game.fillStyle = "#00CC66";
