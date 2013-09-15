@@ -1,9 +1,27 @@
-#Basics:
-1. All aspects of the assignment should be correctly implemented
-2. Nobody
-3. Approximately 8-10 hours
+# Assignment 1: Frogger Optimization
 
-#Additional Requirements:
-1. Animated frogger to dead_frog.png if he gets run over by a vheical or hits water or misses home
-2. Added sound
-3. Implemented level progression - cars and logs get faster with each level
+### Optimization Techniques
+
+- Combined all images into single sprite sheet
+- Removed jQuery file
+- Added JavaScript links to bottom of body instead of head
+- Compressed all code using Minifiers 
+
+### Offline Application Cache
+
+### Tools
+
+The application was initially tested using Yahoo!'s YSlow Chrome extension. However, YSlow gave the unoptimized application an 'A' grade; the only suggestions provided were to 1. Use a CDN (not applicable) and 2. Add Expiry Headers. While the second suggestion was relevant, overall, YSlow was not particularly helpful.
+
+Other data collection was conducted through Chrome Developer Tools.
+
+### Performance
+**Pre-Optimization:**
+
+- **Requests**: 13
+- **Data Transferred**: 189 KB
+- **Load Time**: 1.19 s
+
+
+
+### Issues
