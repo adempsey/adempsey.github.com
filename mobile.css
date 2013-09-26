@@ -22,7 +22,10 @@ a {
 	text-decoration: none;
 }
 
-li { list-style-type: none; }
+li { 
+	list-style-type: none; 
+	margin-left: -40px;
+}
 
 #container {
 	text-align: center;
