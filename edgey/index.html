@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="ico/favicon.ico">
+
+    <title>Cartoon Edge Detection</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+
+
+    <style type="text/css">
+    .carousel-inner > .item > img {
+      margin: 0 auto;
+    }
+
+    .carousel {
+      background-color: #000000;
+    }
+
+    .ourtitle {
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin-top: -220px;
+      z-index: 1;
+      text-shadow: black 0.1em 0.1em 0.2em;
+    }
+
+    #names {
+      margin-top: -170px;
+    }
+</style>
+
+  </head>
+  <body>
+    <!-- Carousel
+    ================================================== -->
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner" style="text-align: center;">
+        <div class="carousel-caption">
+      <h1 class="ourtitle">A Post-Process Approach to Cartoon Edge Drawing</h1>
+      <h2 class="ourtitle" id="names">Paul Chang &amp; Andrew Dempsey</h2>
+    </div>
+        <div class="item active">
+          <img src="img/banner/city.png" alt="First slide">
+        </div>
+        <div class="item">
+          <img src="img/banner/roses.png" alt="Second slide">
+        </div>
+        <div class="item">
+          <img src="img/banner/tufts.png" alt="Third slide">
+        </div>
+      </div>
+      <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+      <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+    </div><!-- /.carousel -->
+
+
+
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+
+    <div class="container marketing">
+
+
+      <!-- START THE FEATURETTES -->
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">Realistic vs. Cartoon Shading</h2>
+          <p class="lead">Oftentimes, a fully realistic rendering of a scene is not entirely ideal for a given project. As an alternative, many developers will often turn to <a href="http://en.wikipedia.org/wiki/Cel-shading" target="blank">cel shading</a> to achieve a unique appearance for 3D scenes.</p>
+
+          <p>Cel shading is a non-photorealistic rendering process that carries an iconic look. It seeks to mimic the style of traditional 2D animation and art by using flat, discrete colors, rather than a continuous gradient. The top image on the right depicts the <a href="http://en.wikipedia.org/wiki/Phong_shading" target="blank">Phong illumination model</a>, a common algorithm for computing realistic scenes. On the bottom, we see the same scene rendered with cel shading.</p>
+        </div>
+        <div class="col-md-5">
+          <img class="featurette-image img-responsive" src="img/balls/realnone.png" alt="Generic placeholder image">
+          <img class="featurette-image img-responsive" src="img/balls/toonnone.png" alt="Generic placeholder image">
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-5">
+          <img class="featurette-image img-responsive" src="img/logit.png" alt="Generic placeholder image">
+        </div>
+        <div class="col-md-7">
+          <h2 class="featurette-heading">Quantization Model</h2>
+          <p class="lead">The unique appearance of cel-shading is achieved by quantizing illumination values into discrete "buckets." In our implementation, bucket thresholds are calculated using the <a href="http://en.wikipedia.org/wiki/Logit_function" target="blank">logit function</a> to create a function for mapping illumination values to buckets.</p>
+          <p> The final lighting value may be computed from the following equation:</p>
+          <img src="img/math/cel.png" alt="cel shading equation"/>
+          <p>The coefficient <em>c</em> allows us to adjust the distribution of cells on a given object. A high <em>c</em> will produce objects with illumination dominated by neutral terms and bright and dark terms as highlights, while low <em>c</em> will give a more uniform distribution of shading. The saturation term allows us to adjust the contrast between shading values, and the brightness allows us to set the lower bound of illumination. For <em>n</em> buckets, <em>n</em> distinct shades will be produced in the scene for each object.
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">Augmented Cel Shading With Edges</h2>
+          <p class="lead">A common stylistic choice in cel-shaded rendering is the addition of dark outlines along objects, which helps maintain the illusion of 2D imagery. To accomplish this effect, we chose a post-processing approach.</p>
+
+          <p>The scene is initially rendered with a normal raytracer. Once the scene is completed, we perform a second rendering pass. At each element of a buffer &alpha;, we convolve the <a href="http://en.wikipedia.org/wiki/Sobel_operator" target="blank">Sobel operator</a> with the value stored in the element, which allows us to approximate the gradient between the element and its surrounding values:</p>
+          <img src="img/math/sobel.png" alt="sobel operator"/>
+          <p>This allows us to store a data structure of the amount of change between a pixel and its surroundings. If the amount of change exceeds a certain threshold, then an edge drawing is composited on top of the original rendering.</p>
+        </div>
+        <div class="col-md-5">
+          <img class="featurette-image img-responsive" src="img/balls/toonint.png" alt="Generic placeholder image">
+          <img class="featurette-image img-responsive" src="img/balls/toondepth.png" alt="Generic placeholder image">
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-5">
+          <img class="featurette-image img-responsive" src="img/balls/onlytoonint.png" alt="Generic placeholder image">
+          <img class="featurette-image img-responsive" src="img/balls/depth.png" alt="Generic placeholder image">
+        </div>
+        <div class="col-md-7">
+          <h2 class="featurette-heading">Edge Detection Data Sources</h2>
+          <p class="lead">
+            Each rendering contains several pieces of data that can be used to help determine the location of edges. In this project, we explored two sources: light intensity, and depth. Edge presence was computed in an identical manner to the other (using the Sobel operator method mentioned above), but differ in some important details and, consequently, can produce very different results.</p>
+
+          <p>For calculating differences in intensity, we create a new buffer of the rendered image in grayscale, and apply the Sobel operator over this buffer. We then scale the final results, and determine if they are above a user-set threshold. If the threshold is exceeded, the edge is drawn over the original image. The result of this calculation applied to a toon-shaded scene is shown in the top image. This approach produces very well defined lines around objects, but suffers from innacuracies, as it tends to draw edges around shadows and shading lines on objects.
+          </p>
+          <p>
+             To calculate edges from depth, we created a z-buffer to store the distance of from each object to the camera at each individual pixel. We then applied the Sobel operator over this z-buffer to determine the amount of change between each pixel. A visualization of the calculated z-buffer is shown in the bottom image. Using this approach, we no longer suffer from edges drawn along shadows or shade lines, but receive less distinct lines, as there may not be enough change, for example, between the bottom of a sphere and the floor it rests on.
+          </p>
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">Supersampling</h2>
+          <p class="lead">As a final touch, the renderings are supersampled in order to ensure there are no "jaggies" present in the final rendering. To accomplish this, rather than calculating illumination at a single pixel, the illumination is calculated at several points around the pixel, and the intensities are averaged together. This results in much smoother edges, and is essential for ensuring clean toon-shaded renderings.</p>
+          <img src="http://paulbourke.net/miscellaneous/aliasing/aliasing4.gif" />
+          <p><em>Image courtesy of Paul Bourke</em></p>
+        </div>
+        <div class="col-md-5">
+          <img class="featurette-image img-responsive" src="img/balls/aliasing.png" alt="Generic placeholder image">
+          <img class="featurette-image img-responsive" src="img/balls/noaliasing.png" alt="Generic placeholder image">
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <!-- /END THE FEATURETTES -->
+
+
+      <!-- FOOTER -->
+      <footer>
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>&copy; 2014 Paul Chang &amp; Andrew Dempsey</p>
+      </footer>
+
+    </div><!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>
