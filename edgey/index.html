@@ -108,14 +108,14 @@
 
       <div class="row featurette">
         <div class="col-md-5">
-          <img class="featurette-image img-responsive" src="img/logit.png" alt="Generic placeholder image">
+          <img class="featurette-image img-responsive" src="img/logit_quant.jpg" alt="Generic placeholder image">
         </div>
         <div class="col-md-7">
           <h2 class="featurette-heading">Quantization Model</h2>
           <p class="lead">The unique appearance of cel-shading is achieved by quantizing illumination values into discrete "buckets." In our implementation, bucket thresholds are calculated using the <a href="http://en.wikipedia.org/wiki/Logit_function" target="blank">logit function</a> to create a function for mapping illumination values to buckets.</p>
           <p> The final lighting value may be computed from the following equation:</p>
           <img src="img/math/cel.png" alt="cel shading equation"/>
-          <p>The coefficient <em>c</em> allows us to adjust the distribution of cells on a given object. A high <em>c</em> will produce objects with illumination dominated by neutral terms and bright and dark terms as highlights, while low <em>c</em> will give a more uniform distribution of shading. The saturation term allows us to adjust the contrast between shading values, and the brightness allows us to set the lower bound of illumination. For <em>n</em> buckets, <em>n</em> distinct shades will be produced in the scene for each object.
+          <p>The coefficient <em>c</em> allows us to adjust the distribution of cells on a given object. A high <em>c</em> will produce objects with illumination dominated by neutral terms and bright and dark terms as highlights, while low <em>c</em> will give a more uniform distribution of shading. The saturation term allows us to adjust the contrast between shading values, and the brightness allows us to set the lower bound of illumination. For <em>n</em> buckets, at most <em>n</em> distinct shades may be produced in the scene for each object.
         </div>
       </div>
 
