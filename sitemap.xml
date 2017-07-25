@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://adempsey.github.io/project/ifw/</loc>
+    <lastmod>2017-05-19T15:58:41-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://adempsey.github.io/project/box/</loc>
+    <lastmod>2017-01-13T15:58:41-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://adempsey.github.io/project/capture/</loc>
+    <lastmod>2016-05-13T15:58:41-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://adempsey.github.io/project/synesthesia/</loc>
+    <lastmod>2016-05-13T15:58:41-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://adempsey.github.io/project/collaboread/</loc>
+    <lastmod>2015-05-17T15:59:41-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://adempsey.github.io/project/collaboread-api/</loc>
+    <lastmod>2015-05-17T15:58:41-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://adempsey.github.io/project/freshly/</loc>
+    <lastmod>2014-12-13T15:59:41-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://adempsey.github.io/project/escapt/</loc>
+    <lastmod>2014-12-13T15:58:41-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://adempsey.github.io/project/edgey/</loc>
+    <lastmod>2014-05-13T15:58:41-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://adempsey.github.io/project/cloudcut/</loc>
+    <lastmod>2013-12-17T15:58:41-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://adempsey.github.io/project/sanity/</loc>
+    <lastmod>2013-08-23T15:58:41-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://adempsey.github.io/</loc>
+    <lastmod>2017-05-19T15:58:41-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://adempsey.github.io/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://adempsey.github.io/project/</loc>
+    <lastmod>2017-05-19T15:58:41-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://adempsey.github.io/tags/</loc>
+    <priority>0</priority>
+  </url>
+  
+</urlset>

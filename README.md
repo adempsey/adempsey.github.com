@@ -1,2 +1,0 @@
-adempsey.github.com
-===================
